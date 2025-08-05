@@ -38,3 +38,12 @@ Running background jobs using celery and rabbitmq
 - Why do you need result backend:
     - Celery uses a backend to store and fetch task results. Without one, result.get() won't work bcz there is nowhere to get the results from.
     - Common backend options: rpc(Lightweight, works well locally), redis(Popular and fast), database(Slower used for testing).
+
+- Start the celery worker:
+  
+      celery -A tasks worker --loglevel=info
+    - This will starts a worker that listens for tasks.
+    - -A is the application name, tasks is the application name (tasks.py)
+
+- Now start sending to the queue using run_tasks.py
+    
